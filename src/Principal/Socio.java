@@ -15,7 +15,7 @@ public class Socio implements Comparable<Socio>, Serializable {
     /**
      * DNI: Representa el dni del socio. Es tipo String 
      */
-    private String dni;
+    private String Apodo;
     /**
      * Nombre: Nombre principal del socio. Es tipo String
      */
@@ -50,7 +50,7 @@ public class Socio implements Comparable<Socio>, Serializable {
      * @param dni de tipo String
      */
     public Socio(String dni) {
-        this.dni = dni;
+        this.Apodo = dni;
     }
     
     
@@ -82,7 +82,7 @@ public class Socio implements Comparable<Socio>, Serializable {
      * @param nuevoDNI de tipo String
      */
     public void cambiarDNI(String nuevoDNI){
-        this.dni = nuevoDNI;
+        this.Apodo = nuevoDNI;
     }
     
     /**
@@ -149,7 +149,7 @@ public class Socio implements Comparable<Socio>, Serializable {
      * @return the dni del socio
      */
     public String getDni() {
-        return dni;
+        return Apodo;
     }
 
     /**
