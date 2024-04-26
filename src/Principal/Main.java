@@ -3,6 +3,7 @@ package Principal;
 
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Set;
 import java.util.TreeSet;
 
 
@@ -12,94 +13,6 @@ import java.util.TreeSet;
  * @author MoisesC
  */
 public class Main {     
-    
-    /**
-     * Método estático. Con el objetivo de eliminar un socio del club
-     * @param nombreClub Colección TreeSet de tipo genérico Socio
-     * @param dni del socio a modificar
-     */
-    static void darBaja(TreeSet<Socio> nombreClub, String dni){
-        Iterator<Socio> it = nombreClub.iterator();
-        
-        boolean encontrado=false;
-        
-        while (it.hasNext()) {
-            Socio socio = it.next();
-            if (socio.getDni().equals(dni)) {
-                it.remove();               
-                encontrado = true;
-                break;
-            }
-        }
-        
-        if (encontrado==false) {
-            System.out.println("Objeto no encontrado");
-        }
-    }
-    
-    
-    /**
-     * Método estático. Con el objetivo de agregar un nuevo socio al club
-     * @param nombreClub Colección TreeSet de tipo genérico Socio
-     * @param socio objeto para agregar al colección "nombreClub"
-     */
-    static void darAlta(TreeSet<Socio> nombreClub, Socio socio){
-        nombreClub.add(socio);
-    }
-    
-    
-    /**
-     * Método estático. Busca el dni dentro de la colección y si hay coincidencia aplica la modificación del nombre
-     * @param nombreClub Colección TreeSet de tipo genérico Socio
-     * @param dni del socio a modificar
-     * @param nuevoNombre principal del socio
-     */
-    static void modificarNombre(TreeSet<Socio> nombreClub, String dni, String nuevoNombre){
-
-        Iterator<Socio> it = nombreClub.iterator();
-        
-        boolean encontrado=false;
-        
-        while (it.hasNext()) {
-            Socio socio = it.next();
-            if (socio.getDni().equals(dni)) {
-                socio.cambiarNombre(nuevoNombre);
-                encontrado = true;
-                break;
-            }
-        }
-        
-        if (encontrado==false) {
-            System.out.println("Objeto no encontrado");
-        }
-    }
-    
-    
-    /**
-     * Método estático. Busca el dni dentro de la colección y si hay coincidencia aplica la modificación de la fecha de alta
-     * @param nombreClub Colección TreeSet de tipo genérico Socio
-     * @param dni del socio a modificar
-     * @param nuevaFecha de alta para el socio
-     */
-    static void modificarFechaAlta(TreeSet<Socio> nombreClub, String dni, String nuevaFecha){
-
-        Iterator<Socio> it = nombreClub.iterator();
-        
-        boolean encontrado=false;
-        
-        while (it.hasNext()) {
-            Socio socio = it.next();
-            if (socio.getDni().equals(dni)) {
-                socio.cambiarFechaAlta(nuevaFecha);
-                encontrado = true;
-                break;
-            }
-        }
-        
-        if (encontrado==false) {
-            System.out.println("Objeto no encontrado");
-        }
-    }
     
     
     /**
@@ -130,32 +43,32 @@ public class Main {
             
         };
         
-        TreeSet<Socio> cs1 = new TreeSet<>(comparaNombre);
+        Club cs1 = new Club("Nautico");
         
         Socio s1 = new Socio("12","Moisés","01/02/2023");
         Socio s2 = new Socio("11","Alejandro","01/02/2022");
         Socio s3 = new Socio("14","Campos","01/02/2021");
-        Socio s4 = new Socio("9","Moisés","01/02/2020"); // NO lo está agregando porque está repetido
-
-        darAlta(cs1, s1);
-        darAlta(cs1, s2);
-        darAlta(cs1, s3);
-        darAlta(cs1, s4);
+        Socio s4 = new Socio("12","Moisés","01/02/2023"); // NO lo está agregando porque está repetido
+  
+        cs1.darAlta(s1);
+        cs1.darAlta(s2);
+        cs1.darAlta(s3);
+        cs1.darAlta(s4);
         
         System.out.println(cs1);
         System.out.println();
         
-        darBaja(cs1, s1.getDni());
+        cs1.darBaja(s4.getDni()); // Funcionará tanto con s1 como con s4
         
         System.out.println(cs1);
         System.out.println();
         
-        modificarNombre(cs1, s2.getDni(), "Ale");
+        cs1.modificarNombre(s2.getDni(), "Ale");
         
         System.out.println(cs1);
         System.out.println();
         
-        modificarFechaAlta(cs1, s2.getDni(), "01/01/1995");
+        cs1.modificarFechaAlta(s2.getDni(), "01/01/1995");
         
         System.out.println(cs1);
         System.out.println();
