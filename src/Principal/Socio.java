@@ -121,12 +121,10 @@ public class Socio implements Comparable<Socio>, Serializable {
      * @param o Recibe un objeto del tipo Object que después se le realiza un cast a "Socio"
      * @return true o false si los valores de los atributos de los objetos son iguales
      */
-    @Override
-    public boolean equals(Object o) {
-        Socio otro = (Socio)o;
-        return getDni().equals((otro).getDni()) &&
-                this.getNombre().equals(otro.getNombre()) &&
-                this.getFechaAlta().equals(otro.getFechaAlta());
+    public boolean equals(Socio o) {
+        return getDni().equals(o.getDni()) &&
+                this.getNombre().equals(o.getNombre()) &&
+                this.getFechaAlta().equals(o.getFechaAlta());
     }
     
     /**

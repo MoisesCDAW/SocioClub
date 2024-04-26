@@ -44,8 +44,8 @@ public class Club {
      * Crea una nueva colección de forma local, aplica el orden por nombre y luego se establece como "plantilla"
      * Usa Clase anónima que establece un comparador por nombres de socios para poder ordernarlos según ese criterio
      */
-    public void ordenarPorNombre(){     
-        Set<Socio> nuevoOrden = new TreeSet<>(
+    public void ordenarPorNombre(){ // CORRECCIÓN: Es mejor hacer los comparator en otra clase    
+        Set<Socio> nuevoOrden = new TreeSet<>( // CORRECCIÓN: Esto va en la clase Socio
            new Comparator<>(){
                 @Override
                 public int compare(Socio o1, Socio o2) {
@@ -63,8 +63,8 @@ public class Club {
      * Crea una nueva colección de forma local, aplica el orden por nombre y luego se establece como "plantilla"
      * Usa Clase anónima que establece un comparador por antigüedad de socios para poder ordernarlos según ese criterio
      */
-    public void ordenarPorAntiguedad(){
-        Set<Socio> nuevoOrden = new TreeSet<>(
+    public void ordenarPorAntiguedad(){ // CORRECCIÓN: Es mejor hacer los comparator en otra clase
+        Set<Socio> nuevoOrden = new TreeSet<>( // CORRECCIÓN: Se debe hacer la clase anónima por separado, no dentro del constructor de la colección
             new Comparator<>(){
                 @Override
                 public int compare(Socio o1, Socio o2) {
@@ -83,7 +83,7 @@ public class Club {
      * @param dni del socio a modificar
      */
     public void darBaja(String dni){
-        Iterator<Socio> it = this.plantilla.iterator();
+        Iterator<Socio> it = this.plantilla.iterator(); // CORRECIÓN: Se puede hacer sin iterator
         
         boolean encontrado=false;
         
@@ -106,7 +106,7 @@ public class Club {
      * Con el objetivo de agregar un nuevo socio al club
      * @param socio objeto para agregar al colección "plantilla"
      */
-    public void darAlta(Socio socio){
+    public void darAlta(Socio socio){ // CORRECIÓN: Hizo falta un reutrn boolean para saber si se agregó o no
         this.plantilla.add(socio);
     }
     
@@ -116,7 +116,7 @@ public class Club {
      * @param dni del socio a modificar
      * @param nuevoNombre principal del socio
      */
-    public void modificarNombre(String dni, String nuevoNombre){
+    public void modificarNombre(String dni, String nuevoNombre){ // CORRECIÓN: Se puede hacer sin iterator
 
         Iterator<Socio> it = this.plantilla.iterator();
         
@@ -142,7 +142,7 @@ public class Club {
      * @param dni del socio a modificar
      * @param nuevaFecha de alta para el socio
      */
-    public void modificarFechaAlta(String dni, String nuevaFecha){
+    public void modificarFechaAlta(String dni, String nuevaFecha){ // CORRECIÓN: Se puede hacer sin iterator
 
         Iterator<Socio> it = this.plantilla.iterator();
         

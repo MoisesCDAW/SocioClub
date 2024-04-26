@@ -23,7 +23,7 @@ public class Main {
         
         /* NOTAS:
         * Si coloco DNI = 9, al ordenar lo coloca al final
-        * Si coloco dos socios iguales solo se agrega uno, pero podré usar cualquier variable de referencia
+        * Si coloco dos socios iguales solo se agrega uno, pero podré usar cualquier variable de referencia porque apuntan al mismo sitio
         */
         
 
@@ -57,6 +57,8 @@ public class Main {
         System.out.println("---- ORDENADO POR NOMBRE ---");
         cs1.ordenarPorNombre();
         System.out.println(cs1+"\n");
+        
+        System.out.println(cs1.getPlantilla());
     }
     
 }
