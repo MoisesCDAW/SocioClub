@@ -35,12 +35,12 @@ public class Socio implements Comparable<Socio>, Serializable {
     
     /**
      * CONSTRUCTOR: Pasando los valores de cada atributo que tendrá el objeto
-     * @param dni de tipo String
+     * @param Apodo de tipo String
      * @param nombre de tipo String
      * @param alta de tipo String que recibe "dia-mes-año" luego se hace un cast a tipo "LocalDate"
      */
-    public Socio(String dni, String nombre, String alta) {
-        cambiarDNI(dni);
+    public Socio(String Apodo, String nombre, String alta) {
+        cambiarApodo(Apodo);
         cambiarNombre(nombre);
         cambiarFechaAlta(alta);
     }
@@ -49,8 +49,8 @@ public class Socio implements Comparable<Socio>, Serializable {
      * CONSTRUCTOR: Para poder crear un objeto solo con el DNI. Utiliza el constructor de arriba
      * @param dni de tipo String
      */
-    public Socio(String dni) {
-        this.Apodo = dni;
+    public Socio(String Apodo) {
+        cambiarApodo(Apodo);
     }
     
     
@@ -79,10 +79,10 @@ public class Socio implements Comparable<Socio>, Serializable {
     
     /**
      * Para cambiar el DNI del socio que lo invoca
-     * @param nuevoDNI de tipo String
+     * @param Apodo tipo String como clave única
      */
-    public void cambiarDNI(String nuevoDNI){
-        this.Apodo = nuevoDNI;
+    public void cambiarApodo(String Apodo){
+        this.Apodo = Apodo;
     }
     
     /**
@@ -93,13 +93,7 @@ public class Socio implements Comparable<Socio>, Serializable {
         DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         this.fechaAlta= LocalDate.parse(nuevaFecha, f);
     }
-        
-    /**
-     * Establece el orden natural que deben seguir los objetos al implementar algún método de organización
-     * @param o Se establece un tipo genérico "Socio" en la implementación de la interfaz y por eso se le pasa un objeto de tipo "Socio"
-     * @return Devuelve -1, 1 o 0 dependiendo de la comparación
-     */
-    
+          
     /*
     *
     * <---------------- MÉTODOS SOBRESCRITOS ----------------------->
@@ -107,13 +101,13 @@ public class Socio implements Comparable<Socio>, Serializable {
     */
     
     /**
-     * 
-     * @param o de tipo Socio porque así se declaró en la implementación de la interfaz
-     * @return -1, 1 o 0 dependiendo del resultado de comparación
-     */ 
+     * Establece el orden natural que deben seguir los objetos al implementar algún método de organización
+     * @param o Se establece un tipo genérico "Socio" en la implementación de la interfaz y por eso se le pasa un objeto de tipo "Socio"
+     * @return Devuelve -1, 1 o 0 dependiendo de la comparación
+     */
     @Override
     public int compareTo(Socio o) {
-        return getDni().compareTo(o.getDni());
+        return getApodo().compareTo(o.getApodo());
     }
 
     /**
@@ -122,7 +116,7 @@ public class Socio implements Comparable<Socio>, Serializable {
      * @return true o false si los valores de los atributos de los objetos son iguales
      */
     public boolean equals(Socio o) {
-        return getDni().equals(o.getDni()) &&
+        return getApodo().equals(o.getApodo()) &&
                 this.getNombre().equals(o.getNombre()) &&
                 this.getFechaAlta().equals(o.getFechaAlta());
     }
@@ -133,7 +127,7 @@ public class Socio implements Comparable<Socio>, Serializable {
      */
     @Override
     public String toString() {
-        return "DNI: " + getDni() + ", Nombre: " + getNombre()
+        return "DNI: " + getApodo() + ", Nombre: " + getNombre()
                 + ", Antiguedad: " + antiguedad() + " años\n";
     }
     
@@ -148,7 +142,7 @@ public class Socio implements Comparable<Socio>, Serializable {
      * DNI: Representa el dni del socio. Es tipo String
      * @return the dni del socio
      */
-    public String getDni() {
+    public String getApodo() {
         return Apodo;
     }
 
