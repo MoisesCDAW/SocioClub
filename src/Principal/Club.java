@@ -38,6 +38,19 @@ public class Club {
     */
     
     
+    public void darAlta(String apodo, Socio socio){
+        getPlantilla().put(apodo, socio);
+    }
+    
+    public void darBaja(String apodo){
+        if (plantilla.containsKey(apodo)) {
+            plantilla.remove(apodo); 
+        }else {System.out.println("Ese apodo no existe");}
+    }
+    
+    public void modificar(String apodo, Socio socio){
+        getPlantilla().put(apodo, socio);
+    }
     
     /*
     *
@@ -72,6 +85,22 @@ public class Club {
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    /**
+     * Colección de tipo set
+     * @return the plantilla
+     */
+    public Map<String, Socio> getPlantilla() {
+        return plantilla;
+    }
+
+    /**
+     * Colección de tipo set
+     * @param plantilla the plantilla to set
+     */
+    public void setPlantilla(Map<String, Socio> plantilla) {
+        this.plantilla = plantilla;
     }
 
 }

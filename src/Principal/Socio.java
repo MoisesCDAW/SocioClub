@@ -44,15 +44,6 @@ public class Socio implements Comparable<Socio>, Serializable {
         cambiarNombre(nombre);
         cambiarFechaAlta(alta);
     }
-
-    /**
-     * CONSTRUCTOR: Para poder crear un objeto solo con el DNI. Utiliza el constructor de arriba
-     * @param dni de tipo String
-     */
-    public Socio(String Apodo) {
-        cambiarApodo(Apodo);
-    }
-    
     
     /*
     *
@@ -127,7 +118,7 @@ public class Socio implements Comparable<Socio>, Serializable {
      */
     @Override
     public String toString() {
-        return "DNI: " + getApodo() + ", Nombre: " + getNombre()
+        return "Nombre: " + getNombre()
                 + ", Antiguedad: " + antiguedad() + " años\n";
     }
     
@@ -139,7 +130,7 @@ public class Socio implements Comparable<Socio>, Serializable {
     
     
     /**
-     * DNI: Representa el dni del socio. Es tipo String
+     * Apodo: Representa el Apodo del socio. Es tipo String
      * @return the dni del socio
      */
     public String getApodo() {
