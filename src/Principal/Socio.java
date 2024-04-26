@@ -106,7 +106,11 @@ public class Socio implements Comparable<Socio>, Serializable {
     *
     */
     
-    
+    /**
+     * 
+     * @param o de tipo Socio porque así se declaró en la implementación de la interfaz
+     * @return -1, 1 o 0 dependiendo del resultado de comparación
+     */ 
     @Override
     public int compareTo(Socio o) {
         return getDni().compareTo(o.getDni());
