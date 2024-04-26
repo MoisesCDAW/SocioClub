@@ -1,6 +1,7 @@
 
 package Principal;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
@@ -19,9 +20,9 @@ public class Club {
      * Colección de tipo set
      */
     private Set<Socio> plantilla;
+
     
-    
-    /*
+    /*     
     *
     * <---------------- CONSTRCUTOR ----------------------->
     *
@@ -31,11 +32,51 @@ public class Club {
         this.plantilla = new TreeSet<>();
     }
 
+    
     /*
     *
     * <---------------- MÉTODOS ----------------------->
     *
     */
+    
+    
+    /**
+     * Crea una nueva colección de forma local, aplica el orden por nombre y luego se establece como "plantilla"
+     * Usa Clase anónima que establece un comparador por nombres de socios para poder ordernarlos según ese criterio
+     */
+    public void ordenarPorNombre(){     
+        Set<Socio> nuevoOrden = new TreeSet<>(
+           new Comparator<>(){
+                @Override
+                public int compare(Socio o1, Socio o2) {
+                    return o1.getNombre().compareTo(o2.getNombre());
+                }            
+           } 
+        );
+        
+        nuevoOrden.addAll(plantilla);
+        this.plantilla = nuevoOrden;
+    }
+    
+    
+    /**
+     * Crea una nueva colección de forma local, aplica el orden por nombre y luego se establece como "plantilla"
+     * Usa Clase anónima que establece un comparador por antigüedad de socios para poder ordernarlos según ese criterio
+     */
+    public void ordenarPorAntiguedad(){
+        Set<Socio> nuevoOrden = new TreeSet<>(
+            new Comparator<>(){
+                @Override
+                public int compare(Socio o1, Socio o2) {
+                    return o1.antiguedad()-o2.antiguedad();
+                }
+            }
+        );
+        
+        nuevoOrden.addAll(plantilla);
+        this.plantilla = nuevoOrden;
+    
+    }
     
     /**
      * Con el objetivo de eliminar un socio del club
